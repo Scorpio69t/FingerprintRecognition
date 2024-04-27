@@ -11,8 +11,8 @@ from Fingerprint import get_all_imgs
 from savenpz import save_npz
 
 
-serialPort_Finger = "/dev/ttyUSB0"  # 串口号
-serialPort_Control = "/dev/ttyUSB0"  # 串口号
+serialPort_Finger = "/dev/tty.usbserial-1120"  # 串口号
+serialPort_Control = "/dev/tty.usbserial-1120"  # 串口号
 baudRate = 57600  # 波特率
 
 

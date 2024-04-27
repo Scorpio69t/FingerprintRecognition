@@ -50,7 +50,7 @@ def show(*images, enlarge_small_images = True, max_per_row = -1, font_size = 0,n
     for r in rows:
         l = [convert(t) for t in r]
     for i in l:
-        cv.imwrite(path+'\\'+str(num[0])+'.png',i)
+        cv.imwrite(path+'/'+str(num[0])+'.png',i)
         num[0]+=1
 
 def load_from_url(url):

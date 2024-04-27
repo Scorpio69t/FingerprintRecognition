@@ -53,7 +53,7 @@ package = b''
 pixel = b''
 img = []
 
-serialPort = "COM8"  # 串口6
+serialPort = "/dev/tty.usbserial-1120"  # 串口6
 baudRate = 57600  # 波特率
 
 

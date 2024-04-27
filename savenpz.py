@@ -31,7 +31,7 @@ def save_npz(path,img):
                           where=sum_gxx_gyy != 0)
 
     region = fingerprint[10:90, 80:130]
-    show(region, path='img\\region', num=num)
+    show(region, path='img/region', num=num)
 
     smoothed = cv.blur(region, (5, 5), -1)
     xs = np.sum(smoothed, 1)
