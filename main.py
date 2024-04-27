@@ -11,8 +11,8 @@ from Fingerprint import get_all_imgs
 from savenpz import save_npz
 
 
-serialPort_Finger = "COM8"  # 串口号
-serialPort_Control = "COM8"  # 串口号
+serialPort_Finger = "/dev/ttyUSB0"  # 串口号
+serialPort_Control = "/dev/ttyUSB0"  # 串口号
 baudRate = 57600  # 波特率
 
 
@@ -29,7 +29,7 @@ def getFingerPic():
 def recognition():
     getFingerPic()
     score = get_all_imgs('pic/origin.png')
-    if (score >= 0.69):
+    if score >= 0.69:
         print('指纹验证通过')
     else:
         print('指纹验证未通过')
