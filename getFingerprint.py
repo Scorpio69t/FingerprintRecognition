@@ -151,9 +151,10 @@ def GET_FINGERPRINT(ser, path='pic/origin.png'):
 
 def ADD_FINGERPRINT(ser):
     global ID
-    ID = eval(input("请输入ID: "))
-    while ID < 1 or ID > 200:
-        ID = eval(input("ID不正确，请重新输入(1-200): "))
+    ID = 1
+    # ID = eval(input("请输入ID: "))
+    # while ID < 1 or ID > 200:
+    #     ID = eval(input("ID不正确，请重新输入(1-200): "))
     print("请第一次输入指纹！")
     while rec_data[9] != b'\x00':  # 改成do while
         Send_A_Cmd(ser, PS_Getimage)
@@ -189,6 +190,7 @@ def ADD_FINGERPRINT(ser):
     print("合成特征成功！")
     rec_data[9] = 3
     check_and_set(ID)
+    ID += 1
     Send_A_Cmd(ser, PS_StoreChar_1tox)
     receive_data(ser)
     if rec_data[9] == b'\x00':
@@ -264,7 +266,7 @@ if __name__ == '__main__':
     ser = serial.Serial(serialPort, baudRate, timeout=0.2)
     print("参数设置：串口= %s ，波特率= %d" % (serialPort, baudRate))
 
-    while (1):
+    while True:
         # -----------------------正式代码-------------------------
         print("请选择功能：1.录入指纹   2.身份验证  3.删除ID=x起的n枚指纹   4.清空指纹库    5.获取指纹图像  6.退出")
         selection = eval(input())
@@ -278,7 +280,7 @@ if __name__ == '__main__':
             CLEAR_LIBRARY(ser)
         elif selection == 5:
             GET_FINGERPRINT(ser)
-        elif selection == 5:
+        elif selection == 6:
             break
 
     ser.close()

@@ -14,12 +14,14 @@ from savenpz import save_npz
 serialPort_Finger = "/dev/tty.usbserial-1120"  # 串口号
 serialPort_Control = "/dev/tty.usbserial-1120"  # 串口号
 baudRate = 57600  # 波特率
+dataBit = 8
+stopBit = 2
 
 
 def getFingerPic():
     """获取指纹图像并保存到本地
     """
-    ser = serial.Serial(serialPort_Finger, baudRate, timeout=0.2)
+    ser = serial.Serial(serialPort_Finger, baudRate, stopbits=serial.STOPBITS_TWO, timeout=0.2)
     print("参数设置: 串口= %s ，波特率= %d" % (serialPort_Finger, baudRate))
 
     GET_FINGERPRINT(ser, 'pic/origin.png')
